@@ -29,29 +29,29 @@ std::vector<vector<unique_ptr<Base>>> MaterializedQueryResult::getContents() {
 					//std::cout<<val<<std::endl;
 					auto dataType = val.GetTypeMutable();
 					string typeName = dataType.ToString();
-					//std::cout<<typeName<<std::endl;
+					// std::cout<<typeName<<std::endl;
 					// std::cout<<typeid(val).name()<<std::endl;
 
-					// if(typeName == "BOOLEAN") {
-					// 	bool native_bool = val.GetValue<bool>();
-					// 	duckdb::BoolData boolData(native_bool);
-					// 	dataVector.push_back(make_uniq<duckdb::BoolData>(boolData));
-					// }
-					// else if(typeName == "BIGINT"){
-					// 	int64_t native_bigint = val.GetValue<int64_t>();
-					// 	duckdb::BigIntData bigintData = duckdb::BigIntData(native_bigint);
-					// 	dataVector.push_back(make_uniq<duckdb::BigIntData>(bigintData));
-					// }
-					// else if(typeName == "UBIGINT"){
-					// 	uint64_t native_bigint = val.GetValue<uint64_t>();
-					// 	duckdb::UBigIntData bigintData = duckdb::UBigIntData(native_bigint);
-					// 	dataVector.push_back(make_uniq<duckdb::UBigIntData>(bigintData));
-					// }     
-					// else if(typeName == "USMALLINT" || typeName == "UTINYINT" || typeName == "INTEGER" || typeName=="SMALLINT" || typeName == "TINYINT") {
-					// 	int native_int = val.GetValue<int>();
-					// 	duckdb::IntData intData = duckdb::IntData(native_int);
-					// 	dataVector.push_back(make_uniq<duckdb::IntData>(intData));
-					// }
+					if(typeName == "BOOLEAN") {
+						bool native_bool = val.GetValue<bool>();
+						duckdb::BoolData boolData(native_bool);
+						dataVector.push_back(make_uniq<duckdb::BoolData>(boolData));
+					}
+					else if(typeName == "BIGINT"){
+						int64_t native_bigint = val.GetValue<int64_t>();
+						duckdb::BigIntData bigintData = duckdb::BigIntData(native_bigint);
+						dataVector.push_back(make_uniq<duckdb::BigIntData>(bigintData));
+					}
+					else if(typeName == "UBIGINT"){
+						uint64_t native_bigint = val.GetValue<uint64_t>();
+						duckdb::UBigIntData bigintData = duckdb::UBigIntData(native_bigint);
+						dataVector.push_back(make_uniq<duckdb::UBigIntData>(bigintData));
+					}     
+					else if(typeName == "USMALLINT" || typeName == "UTINYINT" || typeName == "INTEGER" || typeName=="SMALLINT" || typeName == "TINYINT") {
+						int native_int = val.GetValue<int>();
+						duckdb::IntData intData = duckdb::IntData(native_int);
+						dataVector.push_back(make_uniq<duckdb::IntData>(intData));
+					}
 					if(typeName == "DOUBLE" || typeName == "FLOAT" || typeName == "DECIMAL") {
 						double native_double = val.GetValue<double>();
 						duckdb::DoubleData doubleData = duckdb::DoubleData(native_double);

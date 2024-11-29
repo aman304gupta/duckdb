@@ -29,6 +29,18 @@ struct IntData : public Base {
     explicit IntData(int val) : value(val) {}
 };
 
+struct BigIntData: public Base{
+	int64_t value;
+	
+	explicit BigIntData(int64_t val): value(val){}
+};
+
+struct UBigIntData: public Base{
+	uint64_t value;
+
+	explicit UBigIntData(uint64_t val): value(val){}
+};
+
 // Derived class for doubles
 struct DoubleData : public Base {
     double value;
@@ -43,6 +55,14 @@ struct StringData : public Base {
 
     // Constructor taking a const char* argument
     explicit StringData(string val) : value(val) {}
+};
+
+// Derived class for boolean
+struct BoolData : public Base {
+    bool value;
+
+    // Constructor taking a boolean argument
+    explicit BoolData(bool val) : value(val) {}
 };
 
 
