@@ -52,7 +52,7 @@ std::vector<vector<unique_ptr<Base>>> MaterializedQueryResult::getContents() {
 						duckdb::IntData intData = duckdb::IntData(native_int);
 						dataVector.push_back(make_uniq<duckdb::IntData>(intData));
 					}
-					if(typeName == "DOUBLE" || typeName == "FLOAT" || typeName == "DECIMAL") {
+					else if(typeName == "DOUBLE" || typeName == "FLOAT" || typeName == "DECIMAL") {
 						double native_double = val.GetValue<double>();
 						duckdb::DoubleData doubleData = duckdb::DoubleData(native_double);
 						dataVector.push_back(make_uniq<duckdb::DoubleData>(doubleData));
